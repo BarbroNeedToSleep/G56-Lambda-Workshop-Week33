@@ -58,9 +58,10 @@ public class DataStorageImpl implements DataStorage {
 
     @Override
     public String findOneAndMapToString(Predicate<Person> filter, Function<Person, String> personToString) {
-        // TODO: needs completion
-        List<Person> result = new ArrayList<>();
-        return null;
+
+        Person person = findOne(filter);
+        return (person != null) ? personToString.apply(person) :  null;
+
     }
 
     @Override

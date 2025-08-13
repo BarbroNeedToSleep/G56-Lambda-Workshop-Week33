@@ -41,23 +41,17 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 4.	TODO: Find the Person that has an id of 123 using findOne().
-     */
     public static void exercise4(String message) {
         System.out.println(message);
-        //Write your code here
+        Person person = storage.findOne(person1 -> person1.getId()==123);
+        System.out.println(person);
 
         System.out.println("----------------------");
     }
 
-    /**
-     * 5.	TODO: Find the Person that has an id of 456 and convert to String with following content:
-     * “Name: Nisse Nilsson born 1999-09-09”. Use findOneAndMapToString().
-     */
     public static void exercise5(String message) {
         System.out.println(message);
-        //Write your code here
+        System.out.println(storage.findOneAndMapToString(person1 -> person1.getId() == 456, person1 -> "Name: " + person1.getFirstName() + " " +person1.getLastName() + " born " + person1.getBirthDate() + "."));
 
         System.out.println("----------------------");
     }
