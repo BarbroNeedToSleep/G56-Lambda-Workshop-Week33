@@ -15,33 +15,28 @@ public class Exercises {
     private final static DataStorage storage = DataStorage.INSTANCE;
 
 
-    /**
-     * 1.	TODO: Find everyone that has firstName: “Erik” using findMany().
-     */
     public static void exercise1(String message) {
         System.out.println(message);
-        //Write your code here
         List<Person> persons = storage.findMany(person -> person.getFirstName().equals("Erik"));
         persons.forEach(System.out::println);
 
         System.out.println("----------------------");
     }
 
-    /**
-     * 2.	TODO: Find all females in the collection using findMany().
-     */
+
     public static void exercise2(String message) {
-        //Write your code here
+        System.out.println(message);
+        List<Person> persons = storage.findMany(person -> person.getGender().equals(Gender.FEMALE));
+        persons.forEach(System.out::println);
+
 
         System.out.println("----------------------");
     }
 
-    /**
-     * 3.	TODO: Find all who are born after (and including) 2000-01-01 using findMany().
-     */
     public static void exercise3(String message) {
         System.out.println(message);
-        //Write your code here
+        List<Person> persons = storage.findMany(person -> !person.getBirthDate().isBefore(LocalDate.of(2000,01,1)));
+        persons.forEach(System.out::println);
 
         System.out.println("----------------------");
     }
