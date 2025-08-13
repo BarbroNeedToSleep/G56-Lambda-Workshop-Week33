@@ -7,10 +7,13 @@ import se.lexicon.model.Person;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class Exercises {
 
     private final static DataStorage storage = DataStorage.INSTANCE;
+
 
     /**
      * 1.	TODO: Find everyone that has firstName: “Erik” using findMany().
@@ -18,6 +21,8 @@ public class Exercises {
     public static void exercise1(String message) {
         System.out.println(message);
         //Write your code here
+        List<Person> persons = storage.findMany(person -> person.getFirstName().equals("Erik"));
+        persons.forEach(System.out::println);
 
         System.out.println("----------------------");
     }
