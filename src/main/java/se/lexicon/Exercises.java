@@ -56,9 +56,6 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 6.	TODO: Find all male people whose names start with “E” and convert each to a String using findManyAndMapEachToString().
-     */
     public static void exercise6(String message) {
         System.out.println(message);
 
@@ -71,13 +68,19 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 7.	TODO: Find all people who are below age of 10 and convert them to a String like this:
-     * “Olle Svensson 9 years”. Use findManyAndMapEachToString() method.
-     */
+
     public static void exercise7(String message) {
         System.out.println(message);
-        //Write your code here
+
+        int currentYear = LocalDate.now().getYear();
+        int cutoffYear = currentYear - 10;
+
+
+        storage.findManyAndMapEachToString(
+                person -> person.getBirthDate().getYear() >cutoffYear,
+                person -> person.getFirstName() + " " + person.getLastName() + " " +
+                        (currentYear - person.getBirthDate().getYear()) + " years.")
+                                .forEach(System.out::println);
 
         System.out.println("----------------------");
     }
@@ -87,7 +90,8 @@ public class Exercises {
      */
     public static void exercise8(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findAndDo(person -> person.getFirstName().equals("Ulf"), person -> System.out.println(person));
 
         System.out.println("----------------------");
     }
