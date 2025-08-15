@@ -61,7 +61,12 @@ public class Exercises {
      */
     public static void exercise6(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findManyAndMapEachToString(person -> person.getGender().equals(Gender.MALE) &&
+                person.getFirstName().startsWith("E"),
+                person -> "Name: " + person.getFirstName() + " " + person.getLastName())
+                .forEach(System.out::println);
+
 
         System.out.println("----------------------");
     }
