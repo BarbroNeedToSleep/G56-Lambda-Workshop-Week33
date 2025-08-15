@@ -85,9 +85,7 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 8.	TODO: Using findAndDo() print out all people with firstName “Ulf”.
-     */
+
     public static void exercise8(String message) {
         System.out.println(message);
 
@@ -96,12 +94,10 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 9.	TODO: Using findAndDo() print out everyone who have their lastName contain their firstName.
-     */
     public static void exercise9(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findAndDo(person -> person.getLastName().contains(person.getFirstName()), person -> System.out.println(person));
 
         System.out.println("----------------------");
     }
@@ -111,7 +107,13 @@ public class Exercises {
      */
     public static void exercise10(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findAndDo(person ->
+                { String name = person.getFirstName();
+                        return new StringBuilder(name).reverse().toString().equalsIgnoreCase(name);
+        },
+                person -> System.out.println(person.getFirstName() + " " + person.getLastName())
+        );
 
         System.out.println("----------------------");
     }
