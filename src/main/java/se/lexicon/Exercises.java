@@ -102,9 +102,6 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 10.	TODO: Using findAndDo() print out the firstName and lastName of everyone whose firstName is a palindrome.
-     */
     public static void exercise10(String message) {
         System.out.println(message);
 
@@ -118,32 +115,33 @@ public class Exercises {
         System.out.println("----------------------");
     }
 
-    /**
-     * 11.	TODO: Using findAndSort() find everyone whose firstName starts with A sorted by birthdate.
-     */
     public static void exercise11(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findAndSort(person -> person.getFirstName().startsWith("A"),
+                Comparator.comparing(Person::getBirthDate))
+                .forEach(System.out::println);
 
         System.out.println("----------------------");
     }
 
-    /**
-     * 12.	TODO: Using findAndSort() find everyone born before 1950 sorted reversed by lastest to earliest.
-     */
     public static void exercise12(String message) {
         System.out.println(message);
-        //Write your code here
+
+        storage.findAndSort(person -> person.getBirthDate().isBefore(LocalDate.of(1950,1,1)),
+                Comparator.comparing(Person::getBirthDate).reversed())
+                .forEach(System.out::println);
 
         System.out.println("----------------------");
     }
 
-    /**
-     * 13.	TODO: Using findAndSort() find everyone sorted in following order: lastName > firstName > birthDate.
-     */
     public static void exercise13(String message) {
         System.out.println(message);
-        //Write your code here
+        storage.findAndSort(
+                Comparator.comparing(Person::getLastName)
+                        .thenComparing(Person::getFirstName)
+                        .thenComparing(Person::getBirthDate))
+                .forEach(System.out::println);
 
         System.out.println("----------------------");
     }

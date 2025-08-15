@@ -87,13 +87,21 @@ public class DataStorageImpl implements DataStorage {
 
     @Override
     public List<Person> findAndSort(Comparator<Person> comparator) {
-        // TODO: needs completion
-        return null;
+        List<Person> sortedPersons = new ArrayList<>(personList);
+
+        sortedPersons.sort(comparator);
+        return sortedPersons;
     }
 
     @Override
     public List<Person> findAndSort(Predicate<Person> filter, Comparator<Person> comparator) {
-        // TODO: needs completion
-        return null;
+        List<Person> filtered = new ArrayList<>();
+        for (Person person :personList) {
+            if (filter.test(person)) {
+                filtered.add(person);
+            }
+        }
+        filtered.sort(comparator);
+        return filtered;
     }
 }
